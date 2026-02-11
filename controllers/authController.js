@@ -16,7 +16,7 @@ async function Login(req, res) {
     ]);
     console.log(userQuery[0]);
     const hashedPass = userQuery[0].password_hash;
-    console.log(hashedPass);
+    // console.log(hashedPass);
     try {
       const match = await bcrypt.compare(password, hashedPass);
       if (match) {
