@@ -18,11 +18,9 @@ jobs:
           mkdir -p ~/.ssh
           chmod 700 ~/.ssh
 
-          # Add private key
           echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
 
-          # Add known hosts (from ssh-keyscan)
           echo "${{ secrets.EC2_KNOWN_HOSTS }}" >> ~/.ssh/known_hosts
           chmod 600 ~/.ssh/known_hosts
 
@@ -36,7 +34,7 @@ jobs:
 
             echo "🚀 Starting deployment..."
 
-            cd /backend/expense-tracker-backend-shadcn
+            cd /home/ubuntu/backend/expense-tracker-backend-shadcn
 
             echo "📥 Pulling latest code..."
             git fetch --all
@@ -54,7 +52,6 @@ jobs:
 
             echo "🔁 Restarting PM2 process..."
             pm2 reload index --update-env || pm2 restart index --update-env
-
             pm2 save
 
             echo "✅ Deployment complete!"
