@@ -1,6 +1,6 @@
 const express = require('express');
 const { Login, Register } = require('../controllers/authController');
-const { message } = require('prompt');
+
 
 const Router=express.Router();
 
