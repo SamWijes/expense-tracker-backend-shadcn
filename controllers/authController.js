@@ -62,7 +62,8 @@ async function Register(req, res) {
       req.body.username,
       req.body.email,
     ]);
-
+    console.log(rows);
+    
     if (rows.length > 0)
       return res.status(409).send("Email already Registered");
 
